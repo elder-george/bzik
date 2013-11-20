@@ -7,7 +7,6 @@ import Data.Maybe
 import Control.Monad
 import Control.Monad.Trans.State
 import Control.Monad.Error
-import Debug.Trace
 import System.Environment
 
 data Token = LeftParen | RightParen 
@@ -295,7 +294,7 @@ evalExpression vars e = do
         NumLit n -> return e
         StrLit s -> return e
         Var name -> (Map.lookup name vars) `orError` ("Unknown variable: "++ (show name))
-        Binary t l r -> traceShow t $do
+        Binary t l r -> do
             left <- evalExpression vars l
             right <- evalExpression vars r
             let op = case t of
