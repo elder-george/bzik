@@ -1,0 +1,14 @@
+begin:
+    print ("test")
+    a = 10 + 1
+    b = 12
+    if a < b 
+        then goto less 
+        else goto greater
+less:
+    print(a, " less than ", b)
+    goto end
+greater:
+    print(a, " greater than ", b)
+    goto end
+end:
